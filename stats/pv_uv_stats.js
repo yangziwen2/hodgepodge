@@ -103,21 +103,24 @@ function generateStats(date) {
 					})(data.categories, data.series[0].data, data.series[1].data)
 				});
 			});
-	//		outputTable(list);
+			outputTable(list);
 			outputTable1(title, list);
 		});
 	}
 	
 	function outputTable(list) {
 		var sep = '\t', cache = [];
-		outputLine([' 日期'].concat($.map(list, function(v) {return v.salerRole})), sep, cache);
+		outputLine([' 日期'].concat($.map(list, function(v) {return v.salerRole})).concat('总量'), sep, cache);
 		var dates = $.map(list[0].points, function(point) {
 			return point.date;
 		})
 		for(var i = 0, l = dates.length; i < l; i++) {
+			var total = {date: dates[i], pv: 0, uv: 0};
 			outputLine([dates[i]].concat($.map(list, function(data) {
+				total.pv += data.points[i].pv;
+				total.uv += data.points[i].uv;
 				return data.points[i].uv + '/' + data.points[i].pv;
-			})), sep, cache);
+			}).concat(total.uv + '/' + total.pv)), sep, cache);
 		}
 		console.log(cache.join(''));
 	}
