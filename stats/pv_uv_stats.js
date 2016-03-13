@@ -81,9 +81,38 @@ function generateStats(date) {
 		salerRole: '大区总监'
 	}];
 	
+	var analysisParamsList = [{
+		date: date,
+		pageId: 2025,
+		productId: 616,
+		salerRole: '销售员'
+	}, {
+		date: date,
+		pageId: 2024,
+		productId: 616,
+		salerRole: '销售主管'
+	}, {
+		date: date,
+		pageId: 2023,
+		productId: 616,
+		salerRole: '城市经理'
+	}, {
+		date: date,
+		pageId: 2022,
+		productId: 616,
+		salerRole: '城市总监'
+	}, {
+		date: date,
+		pageId: 2021,
+		productId: 616,
+		salerRole: '大区总监'
+	}];
+	
 	generateReport(repeat(30, '=') + '个人绩效页面(uv/pv)' + repeat(30, '='), paramsList);
 	
 	generateReport(repeat(40, '=') + '绩效详情页面(uv/pv)' + repeat(40, '='), detailParamsList);
+	
+	generateReport(repeat(30, '=') + '销售分析页面(uv/pv)' + repeat(30, '='), analysisParamsList);
 	
 	function generateReport(title, paramsList) {
 		$.when.apply(this, $.map(paramsList, function(params) {
