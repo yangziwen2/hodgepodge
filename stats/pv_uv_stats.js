@@ -120,6 +120,9 @@ function generateStats(date) {
 		})).done(function(){
 			var list = $.map(arguments, function(v, i) {
 				var data = v[0].data;
+				if (data == null) {
+					return;
+				}
 				return $.extend({}, paramsList[i], {
 					points: (function(dates, pvs, uvs) {
 						return $.map(dates, function(date, i) {
