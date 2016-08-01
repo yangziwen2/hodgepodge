@@ -36,6 +36,16 @@ function generateStats(date) {
 		pageId: 1944,
 		productId: 616,
 		salerRole: 'LKA经理'
+	}, {
+		date: date,
+		pageId: 1664,
+		productId: 616,
+		salerRole: '城市总监'
+	}, {
+		date: date,
+		pageId: 1665,
+		productId: 616,
+		salerRole: '大区总监'
 	}];
 	
 	// 绩效详情
